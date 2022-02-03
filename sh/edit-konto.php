@@ -1,27 +1,50 @@
 <?php
 
-$id = $_POST['id'];
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$userName = $_POST['leoleo'];
-$pw = $_POST['mamama'];
+require('../validation/validation.php');
 
-require('../db/db.php');
+$validation = new Validation();
 
-if ($id > 0) {
-    $sql = "UPDATE user SET firstname = '$firstname', lastname = '$lastname', username = '$userName', password = '$pw' WHERE userID = $id;";
-}
-else {
-    $sql = "INSERT INTO user (firstname, lastname, username, password) VALUES ('$firstname', '$lastname', '$userName', '$pw');";
-}
+$firstname = "";
+$lastname = "";
+$username = "";
+$password = "";
 
-$result = $conn->query($sql);
+if( !empty( $_POST ) ) {
+    $id = $_POST['id'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $userName = $_POST['leoleo'];
+    $pw = $_POST['mamama'];
 
-if ($result) {
-    header('Location: ../index.php');
-}
-else {
-    echo "Es ist ein Fehler aufgetreten" . $conn->error;
+    $isFirstnameValid = $validation->validateText( $firstname );
+    $isLastnameValid = $validation->validateText( $lastname );
+    $isUsernameValid = $validation->validateText( $userName );
+    $isPasswordValid = $validation->validateText( $pw );
+
+    header('Location: ../konto.php');
+
+    if($isFirstnameValid == true && $isLastnameValid == true && $isUsernameValid == true && $isPasswordValid == true) {
+
+        require('../db/db.php');
+
+        if ($id > 0) {
+            $sql = "UPDATE user SET firstname = '$firstname', lastname = '$lastname', username = '$userName', password = '$pw' WHERE userID = $id;";
+        }
+        else {
+            $sql = "INSERT INTO user (firstname, lastname, username, password) VALUES ('$firstname', '$lastname', '$userName', '$pw');";
+        }
+        
+        $result = $conn->query($sql);
+        
+        if ($result) {
+            header('Location: ../index.php');
+        }
+        else {
+            echo "Es ist ein Fehler aufgetreten" . $conn->error;
+        }        
+    
+    }
+
 }
 
 ?>

@@ -15,32 +15,6 @@
 
     }
 
-    require('validation/validation.php');
-
-    $validation = new Validation();
-
-    $firstname = "";
-    $lastname = "";
-    $username = "";
-    $password = "";
-    
-    if( !empty( $_POST ) ) {
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $username = $_POST['leoleo'];
-        $password = $_POST['mamama'];
-
-        $isFirstnameValid = $validation->validateText( $firstname );
-        $isLastnameValid = $validation->validateText( $lastname );
-        $isUsernameValid = $validation->validateText( $username );
-        $isPasswordValid = $validation->validateText( $password );
-
-        /*if($isFirstnameValid == true && $isLastnameValid == true && $isUsernameValid == true && $isPasswordValid == true) {
-            header('Location: sh/edit-konto.php');
-        }*/
-        
-    }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
