@@ -43,4 +43,4 @@ create table colorcontrollers (
 
 --inserts
 insert into user values (1, "leon", "mathis", "leonmathis", "123");
-insert into user values (2, "Kanye", "West", "ye", "donda")
+insert into user values (2, "Kanye", "West", "ye", "donda");

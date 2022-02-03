@@ -21,7 +21,7 @@ if( !empty( $_POST ) ) {
     $isUsernameValid = $validation->validateText( $userName );
     $isPasswordValid = $validation->validateText( $pw );
 
-    header('Location: ../konto.php');
+    header("Location: ../konto.php?firstname=$isFirstnameValid&lastname=$isLastNameValid&username=$isUserNameValid&password=$isPasswordValid&id=$id");
 
     if($isFirstnameValid == true && $isLastnameValid == true && $isUsernameValid == true && $isPasswordValid == true) {
 

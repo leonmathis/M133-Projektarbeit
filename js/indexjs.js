@@ -316,4 +316,19 @@ function validateTextField(elem) {
       "inline-block";
     document.querySelector("#" + elem.id + "-wrong").style.display = "none";
   }
+
+  if (
+    firstname.trim().length == 0 ||
+    firstname.trim().length > 30 ||
+    lastname.trim().length == 0 ||
+    lastname.trim().length > 30 ||
+    username.trim().length == 0 ||
+    username.trim().length > 30 ||
+    password.trim().length == 0 ||
+    password.trim().length > 30
+  ) {
+    document.querySelector("#submit-button").disabled = true;
+  } else {
+    document.querySelector("#submit-button").disabled = false;
+  }
 }
