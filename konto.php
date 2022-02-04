@@ -18,6 +18,7 @@
             $isLastnameValid = $_GET['lastname'];
             $isUsernameValid = $_GET['username'];
             $isPasswordValid = $_GET['password'];
+            $doesUsernameExist = $_GET['usernameexist'];
         }
 
     }
@@ -143,7 +144,7 @@ if ($id == 0) {
                     <input type="text" class="opacity-50 form-control" id="leoleo" name="leoleo"  onblur="validateTextField( this )" value="<?php if( isset($row) ) { echo $row['username']; }?>">
                     </div>
                     <?php
-                            if ( isset($isUsernameValid) && !$isUsernameValid) {
+                            if ( isset($isUsernameValid) && !$isUsernameValid && isset($doesUsernameExist) && !$doesUsernameExist) {
                     ?>
                             <div class="col-sm-2">
                             <span class="text-danger fw-bold val"><i class="bi bi-x-circle-fill"></i></span>

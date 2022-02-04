@@ -19,11 +19,12 @@ if( !empty( $_POST ) ) {
     $isFirstnameValid = $validation->validateText( $firstname );
     $isLastnameValid = $validation->validateText( $lastname );
     $isUsernameValid = $validation->validateText( $userName );
+    $doesUsernameExist = $validation->validateUsername( $userName );
     $isPasswordValid = $validation->validateText( $pw );
 
-    header("Location: ../konto.php?firstname=$isFirstnameValid&lastname=$isLastNameValid&username=$isUserNameValid&password=$isPasswordValid&id=$id");
+    header("Location: ../konto.php?firstname=$isFirstnameValid&lastname=$isLastnameValid&username=$isUserNameValid&password=$isPasswordValid&id=$id&usernameexist=$doesUsernameExist");
 
-    if($isFirstnameValid == true && $isLastnameValid == true && $isUsernameValid == true && $isPasswordValid == true) {
+    if($isFirstnameValid == true && $isLastnameValid == true && $isUsernameValid == true && $isPasswordValid == true && $doesUsernameExist == true) {
 
         require('../db/db.php');
 
