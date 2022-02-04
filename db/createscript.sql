@@ -40,7 +40,3 @@ create table colorcontrollers (
     primary key(contID), 
     foreign key(userID) REFERENCES user(userID)
 );
-
---inserts
-insert into user values (1, "leon", "mathis", "leonmathis", "123");
-insert into user values (2, "Kanye", "West", "ye", "donda");
