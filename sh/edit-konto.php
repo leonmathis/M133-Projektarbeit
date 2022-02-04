@@ -20,6 +20,9 @@ if( !empty( $_POST ) ) {
     $isLastnameValid = $validation->validateText( $lastname );
     $isUsernameValid = $validation->validateText( $userName );
     $doesUsernameExist = $validation->validateUsername( $userName );
+    if ($id > 0) {
+        $doesUsernameExist = true;
+    }
     $isPasswordValid = $validation->validateText( $pw );
 
     header("Location: ../konto.php?firstname=$isFirstnameValid&lastname=$isLastnameValid&username=$isUserNameValid&password=$isPasswordValid&id=$id&usernameexist=$doesUsernameExist");
